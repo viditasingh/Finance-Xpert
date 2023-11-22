@@ -5,13 +5,13 @@ import mongoose from "mongoose";
 // creating a post
 
 export const createPost = async (req, res) => {
-  const newPost = new PostModel(req.body)
+  const newPost = new PostModel(req.body);
 
   try {
     await newPost.save();
-    res.status(200).json("new Post created!");
+    res.status(200).json(newPost);
   } catch (error) {
-    res.status(500).json("error creating post");
+    res.status(500).json(error);
   }
 };
 
@@ -22,9 +22,9 @@ export const getPost = async (req, res) => {
 
   try {
     const post = await PostModel.findById(id);
-    res.status(200).json(post)
+    res.status(200).json(post);
   } catch (error) {
-    res.status(500).json(error)
+    res.status(500).json(error);
   }
 };
 
